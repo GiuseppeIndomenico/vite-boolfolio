@@ -4,7 +4,16 @@
         <div v-if="project" class="container">
             <h1 class="display-1 text-center mb-4">{{ project.title }}</h1>
             <p class="fw-semibold">{{ project.description }}</p>
-            <p v-if="project.type && project.type.name !== null" class="fw-semibold">{{ project.type.name }}</p>
+            <p class="fw-semibold">{{ project.type ? project.type.name : '-Categoria non disponibile' }}</p>
+            <div v-if="project.technologies && project.technologies.length > 0">
+                <div v-for="tech in project.technologies" :key="tech.id">
+                    <span class="badge text-bg-primary">{{ tech.name }}</span>
+                </div>
+            </div>
+            <div v-else>
+                <p>-<span class="fw-semibold"> tecnologie non disponibili</span>
+                </p>
+            </div>
         </div>
     </div>
 </template>
@@ -40,6 +49,8 @@ export default {
     },
 
     mounted() {
+        console.log(this.$router);
+        console.log(this.$route);
         this.getProject();
     }
 }
