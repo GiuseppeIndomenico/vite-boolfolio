@@ -7,7 +7,7 @@
             </div>
             <div class="card-footer">
                 <RouterLink class="btn btn-danger" :to="{ name: 'single-project', params: { slug: project.slug } }">
-                    Calpestami!! &hearts;
+                    Mostrami dettagli
                 </RouterLink>
             </div>
         </div>
