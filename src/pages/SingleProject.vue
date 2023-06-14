@@ -1,16 +1,14 @@
 <template>
-    <Loader v-if="project === null" />
-    <div v-if="project" class="container">
-        <h1 class="display-1 text-center mb-4">{{ project.title }}</h1>
-
-        <p class="fw-semibold">{{ project.description }}</p>
-
-        <p class="fw-semibold">{{ project.type.name }}</p>
-
-
+    <div>
+        <Loader v-if="project === null" />
+        <div v-if="project" class="container">
+            <h1 class="display-1 text-center mb-4">{{ project.title }}</h1>
+            <p class="fw-semibold">{{ project.description }}</p>
+            <p v-if="project.type && project.type.name !== null" class="fw-semibold">{{ project.type.name }}</p>
+        </div>
     </div>
 </template>
-
+  
 <script>
 import axios from 'axios';
 import Loader from '../components/Loader.vue';
